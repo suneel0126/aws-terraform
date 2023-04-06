@@ -1,4 +1,10 @@
 terraform {
+// This block used for matain state file on remote...........
+  backend "s3" {
+  bucket = "qc-data-rw"
+  key = "trfm/terrafform.state.tf"
+  region = "ap-south-1"
+}
 
 }
 provider "aws" {
@@ -7,6 +13,8 @@ provider "aws" {
   #secret_key = ""
   #region = "us-west-2"
 }
+
+
 
 // Create ec2-instance
 resource "aws_instance" "ec2" {
@@ -54,6 +62,10 @@ resource "aws_security_group" "sg-01" {
     protocol    = "-1"
     self        = false
     to_port     = 0
+
+  }
+  tags = {
+    "name" = "terraform"
   }
 
 }
