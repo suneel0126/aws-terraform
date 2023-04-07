@@ -1,11 +1,12 @@
 terraform {
 // This block used for matain state file on remote...........
+/*
   backend "s3" {
   bucket = "qc-data-rw"
   key = "trfm/terrafform.state.tf"
   region = "ap-south-1"
 }
-
+*/
 }
 provider "aws" {
   region = "us-east-1"
